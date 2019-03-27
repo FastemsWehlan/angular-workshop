@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../shared/Book';
+import { BookRatingService } from '../shared/book-rating.service';
 
 @Component({
   selector: 'br-dashboard',
@@ -10,7 +11,9 @@ export class DashboardComponent implements OnInit {
 
   books: Book[] = [];
 
-  constructor() { }
+  constructor(private service: BookRatingService) {
+    debugger;
+  }
 
   ngOnInit() {
 
