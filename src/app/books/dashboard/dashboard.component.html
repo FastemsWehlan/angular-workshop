@@ -1,0 +1,19 @@
+<!--
+<br-book [book]="books[0]"></br-book>
+<br-book [book]="books[1]"></br-book>
+<br-book [book]="books[2]"></br-book>
+-->
+
+<!--
+<br-book *ngFor="let b of books" [book]=b></br-book>
+-->
+
+<div>Gesamtanzahl: {{ books.length }}</div>
+<!-- <button class="btn btn-primary">KLICK MICH!</button> -->
+
+<div *ngFor="let b of books; index as i; odd as o; first as f"
+  [ngClass]="{ grayBackground: o, redBackground: f}">
+
+  {{i + 1}} <br-book [book]="b"></br-book>
+
+</div>
