@@ -13,18 +13,14 @@ export class DashboardComponent implements OnInit {
 
   books: Book[] = [];
 
-  constructor(private service: BookRatingService) {
-
-  }
+  constructor(private service: BookRatingService) { }
 
   doRateDown(book: Book) {
-
     const ratedBook = this.service.rateDown(book);
     this.updateAndSort(ratedBook);
   }
 
   doRateUp(book: Book) {
-
     let ratedBook = this.service.rateUp(book);
     this.updateAndSort(ratedBook);
   }
