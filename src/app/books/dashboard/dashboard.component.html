@@ -8,12 +8,13 @@
 <br-book *ngFor="let b of books" [book]=b></br-book>
 -->
 
-<div>Gesamtanzahl: {{ books.length }}</div>
+<h5>Gesamtanzahl: {{ books.length }}</h5>
 <!-- <button class="btn btn-primary">KLICK MICH!</button> -->
 
-<div *ngFor="let b of books; index as i; odd as o; first as f"
-  [ngClass]="{ grayBackground: o, redBackground: f}">
+<div *ngFor="let b of books; index as i; odd as o"
+  [ngClass]="{ grayBackground: o }">
 
-  {{i + 1}} <br-book [book]="b"></br-book>
+  {{i + 1}}.
+  <br-book (rateDown)="doRateDown($event)" (rateUp)="doRateUp($event)" [book]="b"></br-book>
 
 </div>
