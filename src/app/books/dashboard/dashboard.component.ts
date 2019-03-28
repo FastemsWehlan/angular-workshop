@@ -25,14 +25,14 @@ export class DashboardComponent implements OnInit {
     this.updateAndSort(ratedBook);
   }
 
+  doAddBook(newBook: Book) {
+    this.books = [ ...this.books, newBook];
+    this.updateAndSort();
+  }
+
   updateAndSort(ratedBook: Book) {
     this.books = this.books
       .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
-      .sort((a, b) => b.rating - a.rating);
-  }
-
-  doAddBook(newBook: Book) {
-    this.books = [ ...this.books, newBook]
       .sort((a, b) => b.rating - a.rating);
   }
 

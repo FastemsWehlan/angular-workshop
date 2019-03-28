@@ -17,6 +17,10 @@
   [ngClass]="{ grayBackground: o }">
 
   {{i + 1}}.
-  <br-book (rateDown)="doRateDown($event)" (rateUp)="doRateUp($event)" [book]="b"></br-book>
+  <br-book
+    [book]="b"
+    (rateDown)="doRateDown($event)"
+    (rateUp)="doRateUp($event)">
+  </br-book>
 
 </div>
