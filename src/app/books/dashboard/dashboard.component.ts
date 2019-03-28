@@ -31,6 +31,11 @@ export class DashboardComponent implements OnInit {
       .sort((a, b) => b.rating - a.rating);
   }
 
+  doAddBook(newBook: Book) {
+    this.books = [ ...this.books, newBook]
+      .sort((a, b) => b.rating - a.rating);
+  }
+
   ngOnInit() {
 
     this.books = [{
