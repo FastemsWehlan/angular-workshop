@@ -1,14 +1,18 @@
 <ng-container *ngIf="book$ | async as book; else showLoading">
 
-  <h1>{{ book.title }}</h1>
-
-  <div>
+  <h1>#{{ book.title }}</h1>
+  <h2>{{ book.isbn }}</h2>
+  <p>
     {{ book.description }}
-  </div>
+  </p>
 </ng-container>
 
-<ng-template #showLoading>
-  <strong>Computer sagt "NEIN"!!!</strong>
-</ng-template>
+  <ng-template #showLoading>
+    <p>
+      <strong>Computer sagt "NEIN"!!!</strong>
+    </p>
+  </ng-template>
 
-<a routerLink="/book/222">Get Book 222</a>
+
+  <a routerLink="/book/222">Get Book 222</a>
+  <a routerLink="/book/9781787124929">Get Book 9781787124929</a>
