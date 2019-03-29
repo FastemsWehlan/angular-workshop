@@ -3,6 +3,6 @@ export interface Book {
     title: string;
     description: string;
     rating: number;
-    // TODO:
-    // price: number;
+    price: number;
+    firstThumbnailUrl: string;
 }

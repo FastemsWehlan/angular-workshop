@@ -16,14 +16,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(private service: BookRatingService, private store: BookStoreService) { }
 
-  /*
-  "Hausaufgabe" on:
-    Erweitere das Buch-Interface im ein Thumbnail
-    informiere dich über die Verfügbaren Properties mithilfe von Swagger UI
-    erweitere das Interface Book
-    zeige das Thumbnail anstelle der Katzen an!
-  */
-
   ngOnInit() {
     this.store.getAll().subscribe((books) => {
       this.books = books;
