@@ -2,6 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Book } from '../shared/Book';
 import { BookRatingService } from '../shared/book-rating.service';
 import { BookStoreService } from '../shared/book-store.service';
+import { State } from 'src/app/reducers';
+import { Store } from '@ngrx/store';
+import { LoadBooks } from '../actions/book.actions';
 
 @Component({
   selector: 'br-dashboard',
@@ -14,7 +17,13 @@ export class DashboardComponent implements OnInit {
 
   books: Book[] = [];
 
-  constructor(private service: BookRatingService, private store: BookStoreService) { }
+  constructor(
+    private service: BookRatingService,
+    private store: BookStoreService,
+    private ngrxStore: Store<State>) {
+
+      this.ngrxStore.dispatch(new LoadBooks());
+    }
 
   ngOnInit() {
     this.store.getAll().subscribe((books) => {

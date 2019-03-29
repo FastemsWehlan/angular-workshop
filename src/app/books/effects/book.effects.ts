@@ -15,11 +15,10 @@ export class BookEffects {
     concatMap(() =>
       /** An EMPTY observable only emits completion. Replace with your own observable API request */
       EMPTY.pipe(
-        map(data => new LoadBooksSuccess({ data })),
+        map(books => new LoadBooksSuccess({ books })),
         catchError(error => of(new LoadBooksFailure({ error }))))
     )
   );
-
 
   constructor(private actions$: Actions<BookActions>) {}
 
