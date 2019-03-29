@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BookStoreService } from '../shared/book-store.service';
 import { Book } from '../shared/Book';
 import { ActivatedRoute } from '@angular/router';
+import { of, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'br-book-details',
@@ -10,23 +12,37 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BookDetailsComponent implements OnInit {
 
-  isbn: string;
-  book: Book;
+  isbn$: Observable<string>;
+  book$: Observable<Book>;
 
   constructor(private store: BookStoreService,
-     private route: ActivatedRoute) {
-
-
-  }
+     private route: ActivatedRoute) { }
 
   ngOnInit() {
 
-    const r = this.route.paramMap.subscribe((params) => {
-      this.isbn = params.get('isbn');
-    });
+    this.isbn$ = this.route.paramMap
+      .pipe(
+        map(params => params.get('isbn'))
+        );
 
-    this.store.getSingle(this.isbn).subscribe((book) => {
-      this.book = book;
-    });
+    // --------
+
+    const observer = {
+      next: zahl => console.log(zahl),
+      error: e => console.log('ERROR', e),
+      complete: () => console.log('Complete!')
+    };
+
+    const observable = of(1, 2, 3);
+
+    const subscription = observable.subscribe(observer);
+
+    subscription.unsubscribe();
+
+    // // creation funtions
+    // of(1, 2, 3).subscribe(
+    //   zahl => console.log(zahl), e => console.log('ERROR', e),
+    //   () => console.log('Complete!')
+    //   );
   }
 }
