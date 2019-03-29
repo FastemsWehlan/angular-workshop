@@ -23,7 +23,6 @@ export class BookDetailsComponent implements OnInit {
       .pipe(
         map(params => params.get('isbn')),
         switchMap(isbn => this.store.getSingle(isbn)),
-        share()
       );
   }
 }
